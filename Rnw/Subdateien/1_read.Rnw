@@ -1,0 +1,13 @@
+<<SetParent, include=F>>=
+set_parent("../master_sameint.Rnw")
+@
+
+Wird denn hier überhaupt Text angezeigt?
+
+<<load_data, echo=FALSE, results="asis">>=
+
+cat("Hier befinden wir uns innerhalb eines Child-Files.")
+
+@
+
+
