@@ -1,0 +1,79 @@
+\documentclass[fontsize=12,toc=bib,headsepline=off,ngerman, notitlepage]{scrartcl}
+
+	\usepackage[onehalfspacing]{setspace}
+	\usepackage{FiraSans}
+	\usepackage{textcmds}
+	\usepackage[ngerman]{babel}
+	\usepackage{textcomp}
+	\usepackage{xspace}
+	\usepackage[colorlinks=true,
+            linkcolor=red,
+            urlcolor=blue,
+            citecolor=gray]{hyperref}
+            
+            \usepackage{listings}
+            
+      \usepackage{longtable}
+	\usepackage{booktabs}	
+	\usepackage{multirow}
+	
+\pagenumbering{Roman}
+	
+	\setlength\abovecaptionskip{10pt}
+		\setkomafont{caption}{\itshape\rmfamily}
+		\setkomafont{captionlabel}{\scshape\rmfamily}
+
+	\usepackage{natbib}
+		\usepackage{har2nat}
+		
+		\bibpunct[: ]{(}{)}{;}{a}{}{,);}
+		\makeatletter
+		\renewcommand*{\NAT@nmfmt}[1]{\textsc{#1}}		% nochmal rausfinden, was dieser Bereich erledigt.
+		\makeatother
+
+\usepackage{multicol}
+	
+	%\usepackage[obeyspaces]{url}
+	\usepackage{microtype}
+	
+\begin{document}
+
+\renewcommand{\refname}{References}	 % ?nderung der ?berschrift im Literaturverzeichnis
+
+%\begin{titlepage}
+
+	%\titlehead{\center{Expos\'{e} Helge M. Baumann}}
+	%\subject{Expos\'{e}}
+	\title{}
+		\subtitle{}
+	\author{}
+	\date{\today}
+\maketitle[1]	
+%\thispagestyle{empty}	% Muss NACH "maketitle" stehen!
+
+%\clearpage
+\pagenumbering{arabic}
+
+\tableofcontents
+
+<<setup, include=FALSE>>=
+library(knitr)
+opts_chunk$set(size='footnotesize')
+
+thm = knit_theme$get()[34] # 7 seems fine; 39
+knit_theme$set(thm)
+
+pac <- "pacman" %in% rownames(installed.packages())
+if(pac == FALSE) install.packages("pacman"); rm(pac)
+library(pacman)
+p_load("haven", "dplyr", "ggplot2")
+
+@
+  
+	<<input-r, child='./Kapitel/chapter_1.Rnw'>>=
+  @
+  
+	
+	
+
+\end{document}
